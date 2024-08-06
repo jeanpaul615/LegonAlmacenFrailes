@@ -4,7 +4,7 @@ const cors = require('cors');
 const multer = require('multer');
 const path = require('path');
 const app = express();
-const port = process.env.PORT || 3306;
+const port = process.env.PORT || 3000; // Cambiar a 3000 u otro puerto no reservado
 const db = require('./src/config/connection'); // Asegúrate de que la ruta es correcta
 
 // Middleware
@@ -47,6 +47,7 @@ app.post('/upload', upload.single('image'), (req, res) => {
   const checkSql = 'SELECT * FROM stocksistema WHERE Nombre_material = ?';
   db.query(checkSql, [nombreMaterial], (err, results) => {
     if (err) {
+      console.error('Database query failed:', err);
       return res.status(500).json({ error: 'Database query failed' });
     }
 
@@ -55,6 +56,7 @@ app.post('/upload', upload.single('image'), (req, res) => {
       const updateSql = 'UPDATE stocksistema SET Image_url = ? WHERE Nombre_material = ?';
       db.query(updateSql, [imageUrl, nombreMaterial], (err, result) => {
         if (err) {
+          console.error('Database update failed:', err);
           return res.status(500).json({ error: 'Database update failed' });
         }
         res.json({ imageUrl, message: 'Image URL updated successfully' });
@@ -64,6 +66,7 @@ app.post('/upload', upload.single('image'), (req, res) => {
       const insertSql = 'INSERT INTO stocksistema (Image_url, Nombre_material) VALUES (?, ?)';
       db.query(insertSql, [imageUrl, nombreMaterial], (err, result) => {
         if (err) {
+          console.error('Database insert failed:', err);
           return res.status(500).json({ error: 'Database insert failed' });
         }
         res.json({ imageUrl, message: 'New record created successfully' });
