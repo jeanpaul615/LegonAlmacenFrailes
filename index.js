@@ -15,7 +15,7 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-app.use(express.json());
+app.use(express.json()); // El uso de express.json() es suficiente para el cuerpo JSON
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
