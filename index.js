@@ -4,7 +4,7 @@ const cors = require('cors');
 const multer = require('multer');
 const path = require('path');
 const app = express();
-const port = 3306;
+const port = process.env.PORT || 3306;
 const db = require('./src/config/connection'); // Asegúrate de que la ruta es correcta
 
 // Middleware
@@ -61,7 +61,7 @@ app.post('/upload', upload.single('image'), (req, res) => {
       });
     } else {
       // Si no existe el registro, lo creamos
-      const insertSql = 'UPDATE INTO stocksistema SET Image_url = ? Nombre_material = ?';
+      const insertSql = 'INSERT INTO stocksistema (Image_url, Nombre_material) VALUES (?, ?)';
       db.query(insertSql, [imageUrl, nombreMaterial], (err, result) => {
         if (err) {
           return res.status(500).json({ error: 'Database insert failed' });
@@ -87,7 +87,6 @@ const trasladoRoutes = require('./src/routes/transferRoutes');
 const devolverRoutes = require('./src/routes/transactions/sendBackRoutes');
 const salesRoutes = require('./src/routes/salescheckRoutes');
 
-
 // Usa las rutas
 app.use('/', routesAuth);
 app.use('/devolver', devolverRoutes);
@@ -99,7 +98,6 @@ app.use('/user', userRoutes);
 app.use('/contrato', contratoRoutes);
 app.use('/traslado', trasladoRoutes);
 app.use('/facturas', salesRoutes);
-
 
 app.listen(port, () => {
   console.log(`App listening on port ${port}`);
