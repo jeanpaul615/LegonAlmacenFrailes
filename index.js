@@ -89,4 +89,4 @@ for (const [route, path] of Object.entries(routes)) {
 }
 
 // Exporta la función serverless
-module.exports.handler = serverless(app);
+module.exports = serverless(app);
