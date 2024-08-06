@@ -26,7 +26,6 @@ const storage = multer.diskStorage({
     cb(null, 'public/images');
   },
   filename: (req, file, cb) => {
-    // Renombrar el archivo para evitar conflictos
     const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
     cb(null, uniqueSuffix + path.extname(file.originalname));
   }
@@ -41,9 +40,8 @@ app.post('/upload', upload.single('image'), (req, res) => {
   }
 
   const imageUrl = `/images/${req.file.filename}`;
-  const nombreMaterial = req.body.nombreMaterial; // Nombre del material en lugar de ID
+  const nombreMaterial = req.body.nombreMaterial;
 
-  // Primero, verificamos si existe un registro para el material
   const checkSql = 'SELECT * FROM stocksistema WHERE Nombre_material = ?';
   db.query(checkSql, [nombreMaterial], (err, results) => {
     if (err) {
@@ -52,7 +50,6 @@ app.post('/upload', upload.single('image'), (req, res) => {
     }
 
     if (results.length > 0) {
-      // Si existe el registro, lo actualizamos
       const updateSql = 'UPDATE stocksistema SET Image_url = ? WHERE Nombre_material = ?';
       db.query(updateSql, [imageUrl, nombreMaterial], (err, result) => {
         if (err) {
@@ -62,7 +59,6 @@ app.post('/upload', upload.single('image'), (req, res) => {
         res.json({ imageUrl, message: 'Image URL updated successfully' });
       });
     } else {
-      // Si no existe el registro, lo creamos
       const insertSql = 'INSERT INTO stocksistema (Image_url, Nombre_material) VALUES (?, ?)';
       db.query(insertSql, [imageUrl, nombreMaterial], (err, result) => {
         if (err) {
@@ -103,4 +99,4 @@ app.use('/traslado', trasladoRoutes);
 app.use('/facturas', salesRoutes);
 
 // Exporta la función serverless
-module.exports.handler = serverless(app);
+module.exports = serverless(app);
