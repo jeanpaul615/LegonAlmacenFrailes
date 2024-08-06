@@ -1,5 +1,5 @@
+const crypto = require('crypto');
 const db = require('../../config/connection');
-const jwt = require('jsonwebtoken');
 
 const Login = {
     login: (username, password, callback) => {
@@ -11,7 +11,8 @@ const Login = {
             }
 
             if (result.length > 0) {
-                const token = jwt.sign({ username }, "Stack");  // Token sin expiración
+                // Generar un token aleatorio
+                const token = crypto.randomBytes(64).toString('hex');
                 callback(null, { token });
             } else {
                 callback(null, { message: 'Usuario o contraseña incorrectos' });
