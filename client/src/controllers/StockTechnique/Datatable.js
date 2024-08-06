@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const fetchTechniques = async () => {
   try {
-    const response = await axios.get('http://localhost:5000/stocktechnique/get-stock');
+    const response = await axios.get('https://legonalmacenfrailes-1.onrender.com/stocktechnique/get-stock');
     return response.data; // Retorna los datos recibidos desde la API
   } catch (error) {
     console.error('Error al obtener los datos del stock tecnicos:', error);
@@ -13,7 +13,7 @@ export const fetchTechniques = async () => {
   
   export const deleteTechnique = async (id) => {
     try {
-      const response = await fetch(`http://localhost:5000/stocktechnique/delete-stocktechnique/${id}`, {
+      const response = await fetch(`https://legonalmacenfrailes-1.onrender.com/stocktechnique/delete-stocktechnique/${id}`, {
         method: 'DELETE'
       });
       if (!response.ok) {
@@ -33,7 +33,7 @@ export const fetchTechniques = async () => {
     }
   
     try {
-      const response = await fetch(`http://localhost:5000/stocktechnique/update-stocktechnique/${id}`, {
+      const response = await fetch(`https://legonalmacenfrailes-1.onrender.com/stocktechnique/update-stocktechnique/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'

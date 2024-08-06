@@ -13,7 +13,7 @@ export const SaveStockTecnico = async (Id_stocktecnico, Nombre_material, Cantida
     };
 
     // Guardar en stocktecnico usando x-www-form-urlencoded
-    const responseStockTecnico = await axios.post('http://localhost:5000/stocktechnique/add-stocktechnique', qs.stringify(formDataStockTecnico), {
+    const responseStockTecnico = await axios.post('https://legonalmacenfrailes-1.onrender.com/stocktechnique/add-stocktechnique', qs.stringify(formDataStockTecnico), {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
       }
@@ -26,7 +26,7 @@ export const SaveStockTecnico = async (Id_stocktecnico, Nombre_material, Cantida
     };
 
     // Actualizar stocksistema usando x-www-form-urlencoded
-    const responseStockSistema = await axios.post('http://localhost:5000/stock/update-stockbytecnico', qs.stringify(formDataStockSistema), {
+    const responseStockSistema = await axios.post('https://legonalmacenfrailes-1.onrender.com/stock/update-stockbytecnico', qs.stringify(formDataStockSistema), {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
       }

@@ -3,7 +3,7 @@ import Swal from 'sweetalert2'
 export const addStock = async (stockData) => {
 
   try {
-    const response = await fetch('http://localhost:5000/stock/add-stocksistema', {
+    const response = await fetch('https://legonalmacenfrailes-1.onrender.com/stock/add-stocksistema', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

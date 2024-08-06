@@ -2,7 +2,7 @@ import axios from "axios";
 export const fetchDevolver = async () => {
   try {
     const response = await axios.get(
-      "http://localhost:5000/devolver/get-devolver"
+      "https://legonalmacenfrailes-1.onrender.com/devolver/get-devolver"
     );
     return response.data; // Retorna los datos recibidos desde la API
   } catch (error) {
@@ -14,7 +14,7 @@ export const fetchDevolver = async () => {
 export const AddDevolucion = async (Nombre_material, Cantidad) => {
   try {
     const responseStockSistema = await axios.post(
-      "http://localhost:5000/stock/update-stockbytecnico",
+      "https://legonalmacenfrailes-1.onrender.com/stock/update-stockbytecnico",
       {
         Nombre_material,
         Cantidad,
@@ -33,7 +33,7 @@ export const AddDevolucion = async (Nombre_material, Cantidad) => {
 export const AddDatatable = async (Nombre_material, Cantidad, Estado) => {
   try {
     const response = await axios.post(
-      "http://localhost:5000/devolver/add-devolver",
+      "https://legonalmacenfrailes-1.onrender.com/devolver/add-devolver",
       {
         Nombre_material,
         Cantidad,

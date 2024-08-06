@@ -13,7 +13,7 @@ export const SaveTraslado = async (Sede_origen, Sede_destino, Nombre_material, C
     };
 
     // Guardar en stocktecnico usando x-www-form-urlencoded
-    const responseStockTecnico = await axios.post('http://localhost:5000/traslado/add', qs.stringify(formDataTraslado), {
+    const responseStockTecnico = await axios.post('https://legonalmacenfrailes-1.onrender.com/traslado/add', qs.stringify(formDataTraslado), {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
       }
@@ -30,7 +30,7 @@ export const SaveTraslado = async (Sede_origen, Sede_destino, Nombre_material, C
         Estado: "Bueno"
       };
       
-      responseStockSistema = await axios.post('http://localhost:5000/stock/update-stockbydevolucion', qs.stringify(formDataStockSistema), {
+      responseStockSistema = await axios.post('https://legonalmacenfrailes-1.onrender.com/stock/update-stockbydevolucion', qs.stringify(formDataStockSistema), {
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
         }
@@ -42,7 +42,7 @@ export const SaveTraslado = async (Sede_origen, Sede_destino, Nombre_material, C
         Cantidad
       };
   
-      responseStockSistema = await axios.post('http://localhost:5000/stock/update-stockbytecnico', qs.stringify(formDataStockSistema), {
+      responseStockSistema = await axios.post('https://legonalmacenfrailes-1.onrender.com/stock/update-stockbytecnico', qs.stringify(formDataStockSistema), {
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
         }

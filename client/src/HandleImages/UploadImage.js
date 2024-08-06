@@ -32,7 +32,7 @@ function UploadImage({ nombreMaterialProp }) {
     formData.append('nombreMaterial', nombreMaterial);
 
     try {
-      const response = await axios.post('http://localhost:5000/upload', formData, {
+      const response = await axios.post('https://legonalmacenfrailes-1.onrender.com/upload', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

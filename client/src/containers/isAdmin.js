@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const ApisAdmin = async (username) => {
   try {
-    const response = await axios.post('http://localhost:5000/check-admin', {
+    const response = await axios.post('https://legonalmacenfrailes-1.onrender.com/check-admin', {
       username: username
     }, {
       headers: {

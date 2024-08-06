@@ -2,7 +2,7 @@ import axios from "axios";
 // Función encargada de obtener materiales por técnico
 export const getMaterials = async (Nombre_tecnico) => {
   try {
-    const response = await fetch('http://localhost:5000/stocktechnique/materials-by-tecnico', {
+    const response = await fetch('https://legonalmacenfrailes-1.onrender.com/stocktechnique/materials-by-tecnico', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -25,7 +25,7 @@ export const getMaterials = async (Nombre_tecnico) => {
 // Función para obtener la lista de técnicos
 export const getTechnicians = async () => {
   try {
-    const response = await fetch('http://localhost:5000/stocktechnique/all-tecnicos');
+    const response = await fetch('https://legonalmacenfrailes-1.onrender.com/stocktechnique/all-tecnicos');
     if (!response.ok) {
       throw new Error(`Error en la solicitud: ${response.statusText}`);
     }
@@ -40,7 +40,7 @@ export const getTechnicians = async () => {
 // Función para obtener el stock por material en formato application/json
 export const getStockByMaterial = async (Nombre_material, Nombre_tecnico) => {
   try {
-    const response = await fetch('http://localhost:5000/stocktechnique/stock-by-name', {
+    const response = await fetch('https://legonalmacenfrailes-1.onrender.com/stocktechnique/stock-by-name', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -63,7 +63,7 @@ export const getStockByMaterial = async (Nombre_material, Nombre_tecnico) => {
 // Función para enviar un contrato
 export const submitContrato = async (Nombre_contrato, Nombre_material, Nombre_tecnico, Cantidad, onClose) => {
   try {
-    const response = await axios.post('http://localhost:5000/contrato/add-contratos', {
+    const response = await axios.post('https://legonalmacenfrailes-1.onrender.com/contrato/add-contratos', {
       Nombre_contrato,
       Nombre_tecnico,
       Nombre_material,
@@ -71,7 +71,7 @@ export const submitContrato = async (Nombre_contrato, Nombre_material, Nombre_te
     });
     console.log('Contrato agregado:', response.data);
 
-    const response2 = await axios.put('http://localhost:5000/stocktechnique/update-cantidad-stocktechnique', {
+    const response2 = await axios.put('https://legonalmacenfrailes-1.onrender.com/stocktechnique/update-cantidad-stocktechnique', {
       Nombre_material,
       Nombre_tecnico,
       Cantidad,
