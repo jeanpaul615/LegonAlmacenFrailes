@@ -15,7 +15,7 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-app.use(express.json()); // El uso de express.json() es suficiente para el cuerpo JSON
+app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
@@ -89,4 +89,4 @@ for (const [route, path] of Object.entries(routes)) {
 }
 
 // Exporta la función serverless
-module.exports = serverless(app);
+module.exports.handler = serverless(app);
