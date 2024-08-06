@@ -1,6 +1,5 @@
 const serverless = require('serverless-http');
 const express = require('express');
-const bodyParser = require('body-parser');
 const cors = require('cors');
 const multer = require('multer');
 const path = require('path');
@@ -8,15 +7,12 @@ const app = express();
 const db = require('./src/config/connection');
 
 // Middleware
-const corsOptions = {
+app.use(cors({
   origin: '*',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization']
-};
-
-app.use(cors(corsOptions));
-app.use(express.json()); // El uso de express.json() es suficiente para el cuerpo JSON
-app.use(bodyParser.urlencoded({ extended: true }));
+}));
+app.use(express.json()); // Usa express.json() en lugar de bodyParser.urlencoded
 app.use(express.static('public'));
 
 // Configuración de Multer para almacenamiento de imágenes
@@ -52,11 +48,7 @@ app.post('/upload', upload.single('image'), (req, res) => {
       ? 'UPDATE stocksistema SET Image_url = ? WHERE Nombre_material = ?'
       : 'INSERT INTO stocksistema (Image_url, Nombre_material) VALUES (?, ?)';
 
-    const params = results.length > 0
-      ? [imageUrl, nombreMaterial]
-      : [imageUrl, nombreMaterial];
-
-    db.query(sql, params, (err) => {
+    db.query(sql, [imageUrl, nombreMaterial], (err) => {
       if (err) {
         console.error(results.length > 0 ? 'Database update failed:' : 'Database insert failed:', err);
         return res.status(500).json({ error: results.length > 0 ? 'Database update failed' : 'Database insert failed' });
@@ -71,22 +63,20 @@ app.post('/upload', upload.single('image'), (req, res) => {
 app.use('/images', express.static('public/images'));
 
 // Importa y usa las rutas
-const routes = {
-  '/': './src/routes/auth/authRoutes',
-  '/devolver': './src/routes/transactions/sendBackRoutes',
-  '/stock': './src/routes/stockRoutes',
-  '/stocktechnique': './src/routes/stocktechniqueRoutes',
-  '/tecnico': './src/routes/tecnicoRoutes',
-  '/devolucion': './src/routes/transactions/refundRoutes',
-  '/user': './src/routes/user/userRoutes',
-  '/contrato': './src/routes/agreementRoutes',
-  '/traslado': './src/routes/transferRoutes',
-  '/facturas': './src/routes/salescheckRoutes'
-};
+const routes = [
+  { path: '/', module: './src/routes/auth/authRoutes' },
+  { path: '/devolver', module: './src/routes/transactions/sendBackRoutes' },
+  { path: '/stock', module: './src/routes/stockRoutes' },
+  { path: '/stocktechnique', module: './src/routes/stocktechniqueRoutes' },
+  { path: '/tecnico', module: './src/routes/tecnicoRoutes' },
+  { path: '/devolucion', module: './src/routes/transactions/refundRoutes' },
+  { path: '/user', module: './src/routes/user/userRoutes' },
+  { path: '/contrato', module: './src/routes/agreementRoutes' },
+  { path: '/traslado', module: './src/routes/transferRoutes' },
+  { path: '/facturas', module: './src/routes/salescheckRoutes' }
+];
 
-for (const [route, path] of Object.entries(routes)) {
-  app.use(route, require(path));
-}
+routes.forEach(route => app.use(route.path, require(route.module)));
 
 // Exporta la función serverless
 module.exports = serverless(app);
