@@ -22,7 +22,7 @@ export default function Login() {
     };
 
     try {
-      const response = await axios.post("https://legonalmacenfrailes-1.onrender.com/login", data, {
+      const response = await axios.post("http://3.15.96.58/login", data, {
         headers: {
           "Content-Type": "application/json",
         },
