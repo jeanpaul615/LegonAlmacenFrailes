@@ -4,7 +4,7 @@ import qs from 'qs';
 export const updateStockSistema = async (formData) => {
   try {
     const requestData = qs.stringify(formData);
-    const response = await axios.put('http://3.15.96.58/stock/update-stocksistema', requestData, {
+    const response = await axios.put('http://3.131.237.43/stock/update-stocksistema', requestData, {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
       }
@@ -21,7 +21,7 @@ export const updateStockSistema = async (formData) => {
 export const updateStockTechnique = async (formData) => {
   try {
     const requestData = qs.stringify(formData);
-    const response = await axios.put('http://3.15.96.58/stocktechnique/update-stocktechnique', requestData, {
+    const response = await axios.put('http://3.131.237.43/stocktechnique/update-stocktechnique', requestData, {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
       }
@@ -38,7 +38,7 @@ export const updateStockTechnique = async (formData) => {
 export const updateTecnico = async (formData) => {
   try {
     const requestData = qs.stringify(formData);
-    const response = await axios.put('http://3.15.96.58/tecnico/update-tecnico', requestData, {
+    const response = await axios.put('http://3.131.237.43/tecnico/update-tecnico', requestData, {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
       }

@@ -2,7 +2,7 @@ import axios from "axios";
 // Función encargada de obtener materiales por técnico
 export const getMaterials = async (Nombre_tecnico) => {
   try {
-    const response = await fetch('hhttp://3.15.96.58/stocktechnique/materials-by-tecnico', {
+    const response = await fetch('http://3.131.237.43/stocktechnique/materials-by-tecnico', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -25,7 +25,7 @@ export const getMaterials = async (Nombre_tecnico) => {
 // Función para obtener la lista de técnicos
 export const getTechnicians = async () => {
   try {
-    const response = await fetch('hhttp://3.15.96.58/stocktechnique/all-tecnicos');
+    const response = await fetch('http://3.131.237.43/stocktechnique/all-tecnicos');
     if (!response.ok) {
       throw new Error(`Error en la solicitud: ${response.statusText}`);
     }
@@ -40,7 +40,7 @@ export const getTechnicians = async () => {
 // Función para obtener el stock por material en formato application/json
 export const getStockByMaterial = async (Nombre_material, Nombre_tecnico) => {
   try {
-    const response = await fetch('hhttp://3.15.96.58/stocktechnique/stock-by-name', {
+    const response = await fetch('http://3.131.237.43/stocktechnique/stock-by-name', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -63,7 +63,7 @@ export const getStockByMaterial = async (Nombre_material, Nombre_tecnico) => {
 // Función para enviar un contrato
 export const submitContrato = async (Nombre_contrato, Nombre_material, Nombre_tecnico, Cantidad, onClose) => {
   try {
-    const response = await axios.post('hhttp://3.15.96.58/contrato/add-contratos', {
+    const response = await axios.post('http://3.131.237.43/contrato/add-contratos', {
       Nombre_contrato,
       Nombre_tecnico,
       Nombre_material,
@@ -71,7 +71,7 @@ export const submitContrato = async (Nombre_contrato, Nombre_material, Nombre_te
     });
     console.log('Contrato agregado:', response.data);
 
-    const response2 = await axios.put('hhttp://3.15.96.58/stocktechnique/update-cantidad-stocktechnique', {
+    const response2 = await axios.put('http://3.131.237.43/stocktechnique/update-cantidad-stocktechnique', {
       Nombre_material,
       Nombre_tecnico,
       Cantidad,

@@ -4,7 +4,7 @@ import { fetchTechniques } from '../../controllers/StockTechnique/Datatable';
 import Sidebar from '../../containers/Sidebar';
 import ModaltoAdd from './ModaltoAdd';
 import { updateStockTechnique } from '../../controllers/Updates/Update';
-import ModalUpdate from '../../containers/StockSistema/ModalUpdateStock';
+import ModalUpdate from '../../containers/StockSistema/ModalUpdateStock2';
 
 const columns = [
   { title: 'Id', data: 'Id_stocktecnico' },

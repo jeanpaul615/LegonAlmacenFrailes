@@ -22,7 +22,7 @@ export default function Login() {
     };
 
     try {
-      const response = await axios.post("http://3.15.96.58/login", data, {
+      const response = await axios.post("http://3.131.237.43/login", data, {
         headers: {
           "Content-Type": "application/json",
         },

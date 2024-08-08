@@ -4,7 +4,7 @@ import UploadImage from '../../HandleImages/UploadImage';
 function ArticleDetailModal({ isOpen, onClose, article }) {
   if (!isOpen) return null;
 
-  const serverBaseUrl = 'http://localhost:5000/'; // URL base del servidor
+  const serverBaseUrl = 'http://3.131.237.43/'; // URL base del servidor
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50">

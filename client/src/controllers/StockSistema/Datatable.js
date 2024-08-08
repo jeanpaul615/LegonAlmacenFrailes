@@ -3,7 +3,7 @@ import axios from "axios";
 // Función encargada de traer los stocks para la datatable del dashboard
 export const fetchStocks = async () => {
   try {
-    const response = await axios.get('http://3.15.96.58/stock/get-stocksistema');
+    const response = await axios.get('http://3.131.237.43/stock/get-stocksistema');
     const filteredResponse = response.data.filter(stock => stock.Cantidad > 0); // Filtrar datos correctos
     console.log(filteredResponse);
     return filteredResponse; // Retorna los datos filtrados
@@ -15,7 +15,7 @@ export const fetchStocks = async () => {
 
 
 export const deleteStock = async (id) => {
-  const response = await fetch(`http://3.15.96.58/delete-stocksistema/${id}`, {
+  const response = await fetch(`http://3.131.237.43/delete-stocksistema/${id}`, {
     method: 'DELETE'
   });
   if (!response.ok) {
@@ -32,7 +32,7 @@ export const updateStock = async (Id_stocksistema, Nombre_material, Cantidad, Es
 
   try {
     // Obtener el stock actual del material
-    const response = await fetch(`http://3.15.96.58/stock/update-stocksistema/${Id_stocksistema}/${Nombre_material}`, {
+    const response = await fetch(`http://3.131.237.43/stock/update-stocksistema/${Id_stocksistema}/${Nombre_material}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'

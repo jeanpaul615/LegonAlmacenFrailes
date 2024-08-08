@@ -3,7 +3,7 @@ import Swal from 'sweetalert2'
 export const addStock = async (stockData) => {
 
   try {
-    const response = await fetch('http://3.15.96.58/stock/add-stocksistema', {
+    const response = await fetch('http://3.131.237.43/stock/add-stocksistema', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

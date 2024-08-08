@@ -3,7 +3,7 @@ import Swal from 'sweetalert2';
 // Función encargada de agregar un nuevo stock
 export const addStock = async (stockData) => {
   try {
-    const response = await fetch('http://3.15.96.58/add-stocksistema', {
+    const response = await fetch('http://3.131.237.43/add-stocksistema', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -48,7 +48,7 @@ export const addStock = async (stockData) => {
 // Función para obtener la lista de técnicos
 export const getTechnicians = async () => {
   try {
-    const response = await fetch('http://3.15.96.58/tecnico/tecnicos');
+    const response = await fetch('http://3.131.237.43/tecnico/tecnicos');
     if (!response.ok) {
       throw new Error(`Error en la solicitud: ${response.statusText}`);
     }
@@ -63,7 +63,7 @@ export const getTechnicians = async () => {
 // Función para obtener la lista de materiales
 export const getMaterials = async () => {
   try {
-    const response = await fetch('http://3.15.96.58/stock/get-stocksistema');
+    const response = await fetch('http://3.131.237.43/stock/get-stocksistema');
     if (!response.ok) {
       throw new Error(`Error en la solicitud: ${response.statusText}`);
     }
@@ -79,7 +79,7 @@ export const getMaterials = async () => {
 // Función para obtener el stock por material en formato application/json
 export const getStockByMaterial = async (Nombre_material) => {
   try {
-    const response = await fetch('http://3.15.96.58/stock/byname', {
+    const response = await fetch('http://3.131.237.43/stock/byname', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

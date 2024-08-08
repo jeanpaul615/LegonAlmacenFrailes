@@ -4,7 +4,7 @@ import qs from 'qs';
 export const addTechnician = async (technicianData) => {
   try {
     const response = await axios.post(
-      'http://3.15.96.58/tecnico/add-tecnico',
+      'http://3.131.237.43/tecnico/add-tecnico',
       qs.stringify(technicianData), // Convertir a x-www-form-urlencoded
       {
         headers: {

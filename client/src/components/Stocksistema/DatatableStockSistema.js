@@ -2,7 +2,7 @@ import React from 'react';
 import DatatableContainer from '../../containers/StockSistema/Datatable';
 import { fetchStocks } from '../../controllers/StockSistema/Datatable';
 import Sidebar from '../../containers/Sidebar';
-import ModalUpdate from '../../containers/StockSistema/ModalUpdateStock';
+import ModalUpdate from '../../containers/StockSistema/ModalUpdateStock2';
 import { updateStockSistema } from '../../controllers/Updates/Update';
 
 const columns = [

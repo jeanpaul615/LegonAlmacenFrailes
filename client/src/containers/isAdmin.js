@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const ApisAdmin = async (username) => {
   try {
-    const response = await axios.post('http://3.15.96.58/check-admin', {
+    const response = await axios.post('http://3.131.237.43/check-admin', {
       username: username
     }, {
       headers: {
